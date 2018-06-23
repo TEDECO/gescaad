@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=gescaad',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=gescaad',
             'username' => 'adm_gescaad',
-            'password' => 'xKw1S8sq@Lyuttj',
+            'password' => 'xKw1S8sqLyuttj',
             'charset' => 'utf8',
         ],
         'mailer' => [
