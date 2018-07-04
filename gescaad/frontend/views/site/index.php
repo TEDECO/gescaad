@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización Digital';
 ?>
 <div class="site-index">
 
