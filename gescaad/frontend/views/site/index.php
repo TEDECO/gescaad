@@ -6,10 +6,14 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 <div class="site-index">
 
 	<div class="jumbotron">
-		<h1><?php echo Yii::t('app', 'Wellcome to GEESCAD')?></h1>
+		<h1><?php echo Yii::t('app', 'Wellcome to GESCAD')?></h1>
 
 		<p class="lead"><?php echo Yii::t('app', 'Catalog portal for digital literacy courses.')?></p>
-
+		<p class="lead"><?php echo Yii::t('app', 'An acronym of words in Spanish meaning')?><span
+				class='remark'>"GE</span>stión de <span class='remark'>C</span>ontenido
+			<span class='remark'>A</span>udiovisual para <span class='remark'>A</span>lfabetización
+			<span class='remark'>D</span>igital"
+		</p>
 		<p>
 			<a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get
 				started with Yii</a>
