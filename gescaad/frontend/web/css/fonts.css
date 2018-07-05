@@ -2,8 +2,5 @@
 
 @font-face {
 	font-family: 'Trench';
-	src: url('../fonts/trench100free.otf');
-	src: url('../fonts/trench100free.otf?#iefix')
-		format('embedded-opentype');
-	font-weight: normal;
+	src: url('../fonts/trench100free.otf') format('otf');
 }

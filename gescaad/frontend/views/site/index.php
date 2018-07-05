@@ -6,11 +6,11 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 <div class="site-index">
 
 	<div class="jumbotron">
-		<h1><?php echo Yii::t('app', 'Wellcome to GESCAAD')?></h1>
+		<h1><?php echo Yii::t('app', 'Wellcome to administration of GESCAAD')?></h1>
 
 		<p class="lead"><?php echo Yii::t('app', 'Catalog portal for digital literacy courses.')?></p>
-		<p class="lead"><?php echo Yii::t('app', 'An acronym of words in Spanish meaning')?><span
-				class='remark'> "GE</span>stión de <span class='remark'>C</span>ontenido
+		<p class="lead"><?php echo Yii::t('app', 'An acronym of words in Spanish meaning "')?><span
+				class='remark'>GES</span>tión de <span class='remark'>C</span>ontenido
 			<span class='remark'>A</span>udiovisual para <span class='remark'>A</span>lfabetización
 			<span class='remark'>D</span>igital"
 		</p>
@@ -24,24 +24,44 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 
 		<div class="row">
 			<div class="col-lg-4">
-				<h2><?= Yii::t('app', 'Course catalog') ?></h2>
-				<p><?=  Yii::t('app', 'Here you can consult the digital literacy courses available.')?>.</p>
+				<h2><?= Yii::t('app', 'Languajes') ?></h2>
+				<p>
+					<a class="btn btn-default"
+						href="<?= Yii::$app->getUrlManager()->createUrl('languaje-localization/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<h2><?=  Yii::t('app', 'Operating systems')?></h2>
+				<p>
+					<a class="btn btn-default"
+						href="<?= Yii::$app->getUrlManager()->createUrl('operating-system/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<h2><?=  Yii::t('app', 'Software')?></h2>
+				<p>
+					<a class="btn btn-default"
+						href="<?= Yii::$app->getUrlManager()->createUrl('software/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<h2><?= Yii::t('app', 'Courses') ?></h2>
 				<p>
 					<a class="btn btn-default"
 						href="<?= Yii::$app->getUrlManager()->createUrl('course/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
 				</p>
 			</div>
 			<div class="col-lg-4">
-				<h2><?=  Yii::t('app', 'Video catalog')?></h2>
-				<p><?=  Yii::t('app', 'Here you can consult the video digital literacy formation pills available.')?>.</p>
+				<h2><?=  Yii::t('app', 'Videos')?></h2>
 				<p>
 					<a class="btn btn-default"
 						href="<?= Yii::$app->getUrlManager()->createUrl('video/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
 				</p>
 			</div>
 			<div class="col-lg-4">
-				<h2><?=  Yii::t('app', 'Competency catalog')?></h2>
-				<p><?=  Yii::t('app', 'Here you can consult the goals obtainable with the current video digital literacy formation pills available.')?>.</p>
+				<h2><?=  Yii::t('app', 'Competencies')?></h2>
 				<p>
 					<a class="btn btn-default"
 						href="<?= Yii::$app->getUrlManager()->createUrl('competency/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
@@ -51,11 +71,10 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4">
-				<h2><?=  Yii::t('app', 'Other resources and information')?></h2>
-				<p><?=  Yii::t('app', 'Information area and additional resources.')?>.</p>
+				<h2><?=  Yii::t('app', 'Assignments')?></h2>
 				<p>
 					<a class="btn btn-default"
-						href="<?= Yii::$app->getUrlManager()->createUrl('site/information') ?>"><?=  Yii::t('app', 'Access') ?></a>
+						href="<?= Yii::$app->getUrlManager()->createUrl('admin') ?>"><?=  Yii::t('app', 'Access') ?></a>
 				</p>
 			</div>
 			<div class="col-lg-4"></div>
