@@ -20,6 +20,7 @@ return [
             'class' => 'yii\rbac\DbManager'
         ],
         'user' => [
+            // 'class' => 'mdm\admin\models\User',
             'identityClass' => 'mdm\admin\models\User',
             'loginUrl' => [
                 'admin/user/login'
@@ -29,13 +30,17 @@ return [
             'translations' => [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/messages',
+                    'basePath' => '@common/messages',
                     'sourceLanguage' => 'en-US'
                     // 'fileMap' => [
                     // 'app' => 'app.php',
                     // 'app/error' => 'error.php'
                     // ]
-                ]
+                ],
+                'yii2mod.rbac' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@yii2mod/rbac/messages',
+                ],
             ]
         ],
         'urlManager' => [
