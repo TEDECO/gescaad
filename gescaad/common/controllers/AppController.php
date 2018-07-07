@@ -42,8 +42,17 @@ class AppController extends Controller
             // get the cookie collection (yii\web\CookieCollection) from the "request" component
             $cookies = Yii::$app->request->cookies;
             
-            // get the "language" cookie value. If the cookie does not exist, return "en" as the default value
-            $language = $cookies->getValue('gescaad-' . $name . '-language', 'en');
+            if ($cookies->has('gescaad-' . $name . '-language')) {
+                // get the "language" cookie value. If the cookie does not exist, return "en" as the default value
+                $language = $cookies->getValue('gescaad-' . $name . '-language');
+            } else {
+                // Try to get preferred language.
+                $supportedLanguages = [
+                    'en',
+                    'es-ES'
+                ];
+                $language = Yii::$app->request->getPreferredLanguage($supportedLanguages);
+            }
         }
         
         // Sets application language

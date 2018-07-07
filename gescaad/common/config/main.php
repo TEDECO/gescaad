@@ -12,12 +12,14 @@ return [
             'class' => 'mdm\admin\Module'
         ]
     ],
+    /*
     'bootstrap' => [
         [
             'class' => 'common\components\LanguageSelector',
             'supportedLanguages' => ['en', 'es'],
         ],
     ],
+    */
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache'

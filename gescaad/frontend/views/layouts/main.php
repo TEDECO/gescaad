@@ -31,7 +31,7 @@ AppAsset::register($this);
     $languageItem = new cetver\LanguageSelector\items\DropDownLanguageItem([
         'languages' => [
             'en' => '<span class="flag-icon flag-icon-us"></span> ' . Yii::t('app', 'English'),
-            'es' => '<span class="flag-icon flag-icon-es"></span> ' . Yii::t('app', 'Spanish')
+            'es-ES' => '<span class="flag-icon flag-icon-es"></span> ' . Yii::t('app', 'Spanish')
         ],
         'options' => [
             'encode' => false
@@ -70,13 +70,13 @@ AppAsset::register($this);
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = [
-            'label' => 'Signup',
+            'label' => Yii::t('app', 'Signup'),
             'url' => [
                 '/site/signup'
             ]
         ];
         $menuItems[] = [
-            'label' => 'Login',
+            'label' => Yii::t('app', 'Login'),
             'url' => [
                 '/site/login'
             ]
