@@ -1,5 +1,6 @@
 <?php
 
+use common\models\LanguageLocalization;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,17 +19,29 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
+		<div class="row">
+	<div class="col-lg-4">
     <?= $form->field($model, 'vid_id') ?>
-
+    </div>
+    
+	<div class="col-lg-4">
     <?= $form->field($model, 'vid_name') ?>
-
-    <?= $form->field($model, 'languageLocalization_lan_id') ?>
-
+	</div>
+	
+	<div class="col-lg-4">
+    <?= $form->field($model, 'languageLocalization_lan_id')->dropDownList(LanguageLocalization::getList(), [
+                    'prompt' => Yii::t('app', 'select video language').'...',
+                ])?>
+	</div>
+	
+	<div class="col-lg-4">
     <?= $form->field($model, 'vid_duration') ?>
-
+	</div>
+	
+	<div class="col-lg-4">
     <?= $form->field($model, 'vid_file') ?>
-
-    <?php // echo $form->field($model, 'vid_url') ?>
+	</div>
+	</div>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

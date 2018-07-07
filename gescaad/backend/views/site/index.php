@@ -26,10 +26,10 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 				<div class="col-lg-4"></div>
 			</div>
 			<div class="col-lg-4">
-				<h2><?= Yii::t('app', 'Languajes') ?></h2>
+				<h2><?= Yii::t('app', 'Languages') ?></h2>
 				<p>
 					<a class="btn btn-default"
-						href="<?= Yii::$app->getUrlManager()->createUrl('languaje-localization/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
+						href="<?= Yii::$app->getUrlManager()->createUrl('language/index') ?>"><?=  Yii::t('app', 'Access') ?></a>
 				</p>
 			</div>
 			<div class="col-lg-4">

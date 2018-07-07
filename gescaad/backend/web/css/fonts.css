@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Trench';
+	src: url('../fonts/trench100free.otf') format('otf');
+	src: url('../fonts/trench100free.woff') format('woff');
+	src: url('../fonts/trench100free.ttf') format('truetype');
+}

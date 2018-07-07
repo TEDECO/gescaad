@@ -52,6 +52,10 @@ AppAsset::register($this);
             'url' => [
                 '/site/contact'
             ]
+        ],
+        [
+            'label' => Yii::t('app', 'Administration'),
+            'url' => Yii::$app->urlManagerBackend->createAbsoluteUrl("/")
         ]
     ];
     if (Yii::$app->user->isGuest) {

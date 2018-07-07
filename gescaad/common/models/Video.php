@@ -51,12 +51,12 @@ class Video extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'vid_id' => Yii::t('app', 'Vid ID'),
-            'vid_name' => Yii::t('app', 'Vid Name'),
-            'languageLocalization_lan_id' => Yii::t('app', 'Language Localization Lan ID'),
-            'vid_duration' => Yii::t('app', 'Vid Duration'),
-            'vid_file' => Yii::t('app', 'Vid File'),
-            'vid_url' => Yii::t('app', 'Vid Url'),
+            'vid_id' => Yii::t('app', 'Video ID'),
+            'vid_name' => Yii::t('app', 'Video name'),
+            'languageLocalization_lan_id' => Yii::t('app', 'Language localization'),
+            'vid_duration' => Yii::t('app', 'Video duration'),
+            'vid_file' => Yii::t('app', 'Video filename'),
+            'vid_url' => Yii::t('app', 'Video Url'),
         ];
     }
 
@@ -107,5 +107,16 @@ class Video extends \yii\db\ActiveRecord
     public static function find()
     {
         return new VideoQuery(get_called_class());
+    }
+    
+    /**
+     * Gets full language localization array options from LanguageLocalization model. 
+     * For use in input select.
+     *
+     * @return string
+     */
+    public function getLanguageLocalizationList()
+    {
+        return LanguageLocalization::getList();
     }
 }

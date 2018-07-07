@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "languageLocalization".
@@ -40,9 +41,9 @@ class LanguageLocalization extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'lan_id' => Yii::t('app', 'Lan ID'),
-            'lan_name' => Yii::t('app', 'Lan Name'),
-            'lan_naturalReaderCompatible' => Yii::t('app', 'Lan Natural Reader Compatible'),
+            'lan_id' => Yii::t('app', 'Language ID'),
+            'lan_name' => Yii::t('app', 'Language name'),
+            'lan_naturalReaderCompatible' => Yii::t('app', 'Natural reader compatible'),
         ];
     }
 
@@ -61,5 +62,15 @@ class LanguageLocalization extends \yii\db\ActiveRecord
     public static function find()
     {
         return new LanguageLocalizationQuery(get_called_class());
+    }
+    
+    /**
+     * Returns array of current language localization options.
+     *
+     * @return array (lan_id,lan_name)
+     */
+    public function getList()
+    {
+        return ArrayHelper::map(LanguageLocalization::find()->all(), 'lan_id', 'lan_name');
     }
 }

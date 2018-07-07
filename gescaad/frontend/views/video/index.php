@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($model, $key, $index, $column) {
                     return $model->languageLocalizationLan->lan_id;
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'languageLocalization_lan_id', $searchModel->LanguajeLocalization, [
+                'filter' => Html::activeDropDownList($searchModel, 'languageLocalization_lan_id', $searchModel->LanguageLocalizationList, [
                     'class' => 'form-control',
                     'prompt' => Yii::t('app', 'select video language').'...',
                 ])

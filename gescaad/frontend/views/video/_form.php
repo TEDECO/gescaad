@@ -1,5 +1,5 @@
 <?php
-
+use common\models\LanguageLocalization;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,8 +14,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'vid_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'languageLocalization_lan_id')->textInput() ?>
-
+    <?= $form->field($model, 'languageLocalization_lan_id')->dropDownList(LanguageLocalization::getList(), [
+                    'prompt' => Yii::t('app', 'select video language').'...',
+                ])?>
+                
     <?= $form->field($model, 'vid_duration')->textInput() ?>
 
     <?= $form->field($model, 'vid_file')->textInput(['maxlength' => true]) ?>

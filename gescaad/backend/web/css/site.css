@@ -118,3 +118,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+span.remark {
+	color: #cc3300;
+	font-weight: bold;
+}
+
+.navbar-brand {
+	font-family: 'Trench';
+}
