@@ -14,10 +14,6 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 			<span class='remark'>A</span>udiovisual para <span class='remark'>A</span>lfabetización
 			<span class='remark'>D</span>igital"
 		</p>
-		<p>
-			<a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get
-				started with Yii</a>
-		</p>
 	</div>
 
 	<div class="body-content">

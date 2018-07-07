@@ -12,6 +12,12 @@ return [
             'class' => 'mdm\admin\Module'
         ]
     ],
+    'bootstrap' => [
+        [
+            'class' => 'common\components\LanguageSelector',
+            'supportedLanguages' => ['en', 'es'],
+        ],
+    ],
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache'
@@ -32,15 +38,17 @@ return [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@common/messages',
                     'sourceLanguage' => 'en-US'
-                    // 'fileMap' => [
-                    // 'app' => 'app.php',
-                    // 'app/error' => 'error.php'
-                    // ]
                 ],
-                'yii2mod.rbac' => [
+                /*
+                'frontend*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@yii2mod/rbac/messages',
+                    'basePath' => '@common/messages'
                 ],
+                'backend*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages'
+                ],
+                */
             ]
         ],
         'urlManager' => [
@@ -52,6 +60,6 @@ return [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>'
             )
-        ]
-    ],
+        ],
+    ]
 ];

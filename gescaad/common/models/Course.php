@@ -40,9 +40,9 @@ class Course extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cou_id' => Yii::t('app', 'Cou ID'),
-            'cou_name' => Yii::t('app', 'Cou Name'),
-            'cou_totalDuration' => Yii::t('app', 'Cou Total Duration'),
+            'cou_id' => Yii::t('app', 'Course ID'),
+            'cou_name' => Yii::t('app', 'Course name'),
+            'cou_totalDuration' => Yii::t('app', 'Course total duration (minutes)'),
         ];
     }
 

@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use common\models\LanguageLocalization;
 use common\models\LanguageLocalizationSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\controllers\AppController;
 
 /**
  * LanguageController implements the CRUD actions for LanguageLocalization model.
  */
-class LanguageController extends Controller
+class LanguageController extends AppController
 {
     /**
      * {@inheritdoc}

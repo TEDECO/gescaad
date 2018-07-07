@@ -10,6 +10,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,6 +28,15 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+    $languageItem = new cetver\LanguageSelector\items\DropDownLanguageItem([
+        'languages' => [
+            'en' => '<span class="flag-icon flag-icon-us"></span> ' . Yii::t('app', 'English'),
+            'es' => '<span class="flag-icon flag-icon-es"></span> ' . Yii::t('app', 'Spanish')
+        ],
+        'options' => [
+            'encode' => false
+        ]
+    ]);
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -78,6 +88,7 @@ AppAsset::register($this);
             'class' => 'btn btn-link logout'
         ]) . Html::endForm() . '</li>';
     }
+    $menuItems[] = $languageItem->toArray();
     echo Nav::widget([
         'options' => [
             'class' => 'navbar-nav navbar-right'

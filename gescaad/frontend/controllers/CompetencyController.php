@@ -3,16 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
+use common\controllers\AppController;
 use common\models\Competency;
 use common\models\CompetencySearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CompetencyController implements the CRUD actions for Competency model.
  */
-class CompetencyController extends Controller
+class CompetencyController extends AppController
 {
     /**
      * {@inheritdoc}

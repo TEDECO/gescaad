@@ -15,12 +15,18 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 
 		<div class="row">
 			<div class="row">
-				<div class="col-lg-4"></div>
 				<div class="col-lg-4">
 					<h2><?=  Yii::t('app', 'User assignments')?></h2>
 					<p>
 						<a class="btn btn-default"
 							href="<?= Yii::$app->getUrlManager()->createUrl('admin') ?>"><?=  Yii::t('app', 'Access') ?></a>
+					</p>
+				</div>
+				<div class="col-lg-4">
+					<h2><?=  Yii::t('app', 'Users')?></h2>
+					<p>
+						<a class="btn btn-default"
+							href="<?= Yii::$app->getUrlManager()->createUrl('admin/user') ?>"><?=  Yii::t('app', 'Access') ?></a>
 					</p>
 				</div>
 				<div class="col-lg-4"></div>

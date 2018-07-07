@@ -43,9 +43,9 @@ class VideoGoals extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'vig_id' => Yii::t('app', 'Vig ID'),
-            'video_vid_id' => Yii::t('app', 'Video Vid ID'),
-            'competency_com_id' => Yii::t('app', 'Competency Com ID'),
+            'vig_id' => Yii::t('app', 'Video goal ID'),
+            'video_vid_id' => Yii::t('app', 'Video ID'),
+            'competency_com_id' => Yii::t('app', 'Competency ID'),
         ];
     }
 

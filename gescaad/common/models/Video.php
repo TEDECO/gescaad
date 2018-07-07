@@ -54,7 +54,7 @@ class Video extends \yii\db\ActiveRecord
             'vid_id' => Yii::t('app', 'Video ID'),
             'vid_name' => Yii::t('app', 'Video name'),
             'languageLocalization_lan_id' => Yii::t('app', 'Language localization'),
-            'vid_duration' => Yii::t('app', 'Video duration'),
+            'vid_duration' => Yii::t('app', 'Video duration (minutes)'),
             'vid_file' => Yii::t('app', 'Video filename'),
             'vid_url' => Yii::t('app', 'Video Url'),
         ];

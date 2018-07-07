@@ -43,9 +43,9 @@ class VideoRequirements extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'vir_id' => Yii::t('app', 'Vir ID'),
-            'video_vid_id' => Yii::t('app', 'Video Vid ID'),
-            'competency_com_id' => Yii::t('app', 'Competency Com ID'),
+            'vir_id' => Yii::t('app', 'Video requirement ID'),
+            'video_vid_id' => Yii::t('app', 'Video ID'),
+            'competency_com_id' => Yii::t('app', 'Competency ID'),
         ];
     }
 
