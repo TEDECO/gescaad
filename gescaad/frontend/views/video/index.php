@@ -1,8 +1,13 @@
 <?php
 
+use yii\base\Model;
+// use yii\grid\GridView;
+use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use yii\widgets\Pjax;
+use common\models\LanguageLocalization;
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\VideoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -24,11 +29,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
+            ['class' => '\kartik\grid\SerialColumn'],
 
-            'vid_id',
+            // 'vid_id',
             'vid_name',
-            'languageLocalization_lan_id',
+
+            [
+                'attribute' => 'languageLocalization_lan_id',
+                'value' => function ($model, $key, $index, $column) {
+                    return $model->languageLocalizationLan->lan_id;
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'languageLocalization_lan_id', $searchModel->LanguajeLocalization, [
+                    'class' => 'form-control',
+                    'prompt' => Yii::t('app', 'select video language').'...',
+                ])
+            ],
+            
             'vid_duration',
             'vid_file',
             // 'vid_url:url',
