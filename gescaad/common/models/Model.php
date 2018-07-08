@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\BaseYii;
 use yii\helpers\ArrayHelper;
 
 class Model extends \yii\base\Model
@@ -23,14 +24,14 @@ class Model extends \yii\base\Model
         $models = [];
         
         if (! empty($multipleModels)) {
-            $keys = array_keys(ArrayHelper::map($multipleModels, 'id', 'id'));
+            $keys = array_keys(ArrayHelper::map($multipleModels, 'hco_id', 'hco_id'));
             $multipleModels = array_combine($keys, $multipleModels);
         }
         
         if ($post && is_array($post)) {
             foreach ($post as $i => $item) {
-                if (isset($item['id']) && ! empty($item['id']) && isset($multipleModels[$item['id']])) {
-                    $models[] = $multipleModels[$item['id']];
+                if (isset($item['hco_id']) && ! empty($item['hco_id']) && isset($multipleModels[$item['hco_id']])) {
+                    $models[] = $multipleModels[$item['hco_id']];
                 } else {
                     $models[] = new $modelClass();
                 }
@@ -39,6 +40,6 @@ class Model extends \yii\base\Model
         
         unset($model, $formName, $post);
         
-        return $models;
+        return $models;       
     }
 }

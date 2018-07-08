@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "competency".
@@ -64,5 +65,23 @@ class Competency extends \yii\db\ActiveRecord
     public static function find()
     {
         return new CompetencyQuery(get_called_class());
+    }
+    
+    /**
+     * Returns array of current competency options.
+     *
+     * @return array (com_id,com_name)
+     */
+    public function getList()
+    {
+        return ArrayHelper::map(Competency::find()->all(), 'com_id', 'com_name');
+    }
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->com_name;
     }
 }
