@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "video".
@@ -109,5 +110,23 @@ class Video extends \yii\db\ActiveRecord
     public function getLanguageLocalizationList()
     {
         return LanguageLocalization::getList();
+    }
+    
+    /**
+     * Returns array of current competency options.
+     *
+     * @return array (vid_id,vid_name)
+     */
+    public function getList()
+    {
+        return ArrayHelper::map(Video::find()->all(), 'vid_id', 'vid_name');
+    }
+    
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->vid_name;
     }
 }

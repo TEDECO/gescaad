@@ -3,7 +3,6 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Competency;
-use common\models\Model;
 use common\models\Video;
 use common\models\VideoSearch;
 use common\controllers\AppController;
@@ -11,11 +10,10 @@ use yii\BaseYii;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use yii\db\Exception;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use yii\helpers\VarDumper;
 use common\models\HasCompetency;
+use common\models\ModelHasCompetency;
 
 /**
  * VideoController implements the CRUD actions for Video model.
@@ -84,15 +82,10 @@ class VideoController extends AppController
             new HasCompetency()
         ];
         
-        /*
-         * if ($model->load(Yii::$app->request->post()) && $model->save()) {
-         * return $this->redirect(['view', 'id' => $model->vid_id]);
-         * }
-         */
         if ($model->load(Yii::$app->request->post())) {
             
-            $modelsHasCompetency = Model::createMultiple(HasCompetency::classname());
-            Model::loadMultiple($modelsHasCompetency, Yii::$app->request->post());
+            $modelsHasCompetency = ModelHasCompetency::createMultiple(HasCompetency::classname());
+            ModelHasCompetency::loadMultiple($modelsHasCompetency, Yii::$app->request->post());
             
             // ajax validation
             if (Yii::$app->request->isAjax) {
@@ -102,7 +95,7 @@ class VideoController extends AppController
             
             // validate all models
             $valid = $model->validate();
-            $valid = Model::validateMultiple($modelsHasCompetency) && $valid;
+            $valid = ModelHasCompetency::validateMultiple($modelsHasCompetency) && $valid;
             
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
@@ -123,7 +116,8 @@ class VideoController extends AppController
                             'id' => $model->vid_id
                         ]);
                     }
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
+                    BaseYii::Debug("EXCEPTION: " . $e->getMessage());
                     $transaction->rollBack();
                 }
             }
@@ -153,15 +147,10 @@ class VideoController extends AppController
         
         BaseYii::Debug("OLDIDS: " . implode("|", $oldIDs));
         
-        /*
-         * if ($model->load(Yii::$app->request->post()) && $model->save()) {
-         * return $this->redirect(['view', 'id' => $model->vid_id]);
-         * }
-         */
         if ($model->load(Yii::$app->request->post())) {
             
-            $modelsHasCompetency = Model::createMultiple(HasCompetency::classname(), $modelsHasCompetency);
-            Model::loadMultiple($modelsHasCompetency, Yii::$app->request->post());
+            $modelsHasCompetency = ModelHasCompetency::createMultiple(HasCompetency::classname(), $modelsHasCompetency);
+            ModelHasCompetency::loadMultiple($modelsHasCompetency, Yii::$app->request->post());
             
             // checks for deleted competencies
             $deletedCompetenciesID = array_diff($oldIDs, HasCompetency::getIDArray($modelsHasCompetency));
@@ -176,7 +165,7 @@ class VideoController extends AppController
             
             // validate all models
             $valid = $model->validate();
-            $valid = Model::validateMultiple($modelsHasCompetency) && $valid;
+            $valid = ModelHasCompetency::validateMultiple($modelsHasCompetency) && $valid;
             
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();

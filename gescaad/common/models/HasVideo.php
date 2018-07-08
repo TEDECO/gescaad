@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "hasVideo".
@@ -32,7 +33,8 @@ class HasVideo extends \yii\db\ActiveRecord
     {
         return [
             [['hvi_order', 'video_vid_id', 'course_cou_id'], 'integer'],
-            [['video_vid_id', 'course_cou_id'], 'required'],
+            // [['video_vid_id', 'course_cou_id'], 'required'],
+            [['video_vid_id'], 'required'],
             [['course_cou_id'], 'exist', 'skipOnError' => true, 'targetClass' => Course::className(), 'targetAttribute' => ['course_cou_id' => 'cou_id']],
             [['video_vid_id'], 'exist', 'skipOnError' => true, 'targetClass' => Video::className(), 'targetAttribute' => ['video_vid_id' => 'vid_id']],
         ];
@@ -74,5 +76,26 @@ class HasVideo extends \yii\db\ActiveRecord
     public static function find()
     {
         return new HasVideoQuery(get_called_class());
+    }
+    
+    /**
+     * Returns array of IDs of an array of competencies.
+     *
+     * @param [Competency] $objects
+     * @return array
+     */
+    public function getIDArray( $objects ) {
+        return ArrayHelper::map($objects, 'hvi_id', 'hvi_id');
+    }
+    
+    /**
+     * Deletes all competencies identified by hvi_id.
+     *
+     * @param [integer] $array
+     */
+    public function deleteAllByID( $array ){
+        HasVideo::deleteAll([
+            'hvi_id' => $array
+        ]);
     }
 }

@@ -6,7 +6,7 @@ use Yii;
 use yii\BaseYii;
 use yii\helpers\ArrayHelper;
 
-class Model extends \yii\base\Model
+class ModelHasCompetency extends \yii\base\Model
 {
 
     /**
