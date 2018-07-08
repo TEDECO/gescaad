@@ -3,9 +3,9 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\controllers\AppController;
 use common\models\Competency;
 use common\models\CompetencySearch;
+use common\controllers\AppController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 

@@ -10,7 +10,7 @@ use Yii;
  * @property int $ope_id
  * @property string $ope_name operating system name
  *
- * @property SoftwareSOCompatibility[] $softwareSOCompatibilities
+ * @property IsCompatible[] $isCompatibles
  */
 class OperatingSystem extends \yii\db\ActiveRecord
 {
@@ -38,17 +38,17 @@ class OperatingSystem extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ope_id' => Yii::t('app', 'Ope ID'),
-            'ope_name' => Yii::t('app', 'Ope Name'),
+            'ope_id' => Yii::t('app', 'Perating System ID'),
+            'ope_name' => Yii::t('app', 'Operating System Name'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSoftwareSOCompatibilities()
+    public function getIsCompatibles()
     {
-        return $this->hasMany(SoftwareSOCompatibility::className(), ['operatingSystem_ope_id' => 'ope_id']);
+        return $this->hasMany(IsCompatible::className(), ['operatingSystem_ope_id' => 'ope_id']);
     }
 
     /**

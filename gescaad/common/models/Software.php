@@ -11,8 +11,8 @@ use Yii;
  * @property string $sof_name short software name
  * @property string $sof_release software release
  *
- * @property SoftwareSOCompatibility[] $softwareSOCompatibilities
- * @property VideoSWRequirements[] $videoSWRequirements
+ * @property HasRequirement[] $hasRequirements
+ * @property IsCompatible[] $isCompatibles
  */
 class Software extends \yii\db\ActiveRecord
 {
@@ -41,26 +41,26 @@ class Software extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'sof_id' => Yii::t('app', 'Sof ID'),
-            'sof_name' => Yii::t('app', 'Sof Name'),
-            'sof_release' => Yii::t('app', 'Sof Release'),
+            'sof_id' => Yii::t('app', 'Software ID'),
+            'sof_name' => Yii::t('app', 'Software name'),
+            'sof_release' => Yii::t('app', 'Software release'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSoftwareSOCompatibilities()
+    public function getHasRequirements()
     {
-        return $this->hasMany(SoftwareSOCompatibility::className(), ['software_sof_id' => 'sof_id']);
+        return $this->hasMany(HasRequirement::className(), ['software_sof_id' => 'sof_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVideoSWRequirements()
+    public function getIsCompatibles()
     {
-        return $this->hasMany(VideoSWRequirements::className(), ['software_sof_id' => 'sof_id']);
+        return $this->hasMany(IsCompatible::className(), ['software_sof_id' => 'sof_id']);
     }
 
     /**

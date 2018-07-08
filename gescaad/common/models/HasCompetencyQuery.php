@@ -3,11 +3,11 @@
 namespace common\models;
 
 /**
- * This is the ActiveQuery class for [[SoftwareSOCompatibility]].
+ * This is the ActiveQuery class for [[HasCompetency]].
  *
- * @see SoftwareSOCompatibility
+ * @see HasCompetency
  */
-class SoftwareSOCompatibilityQuery extends \yii\db\ActiveQuery
+class HasCompetencyQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class SoftwareSOCompatibilityQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return SoftwareSOCompatibility[]|array
+     * @return HasCompetency[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class SoftwareSOCompatibilityQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return SoftwareSOCompatibility|array|null
+     * @return HasCompetency|array|null
      */
     public function one($db = null)
     {

@@ -3,11 +3,11 @@
 namespace common\models;
 
 /**
- * This is the ActiveQuery class for [[VideoSWRequirements]].
+ * This is the ActiveQuery class for [[HasRequirement]].
  *
- * @see VideoSWRequirements
+ * @see HasRequirement
  */
-class VideoSWRequirementsQuery extends \yii\db\ActiveQuery
+class HasRequirementQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class VideoSWRequirementsQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return VideoSWRequirements[]|array
+     * @return HasRequirement[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class VideoSWRequirementsQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return VideoSWRequirements|array|null
+     * @return HasRequirement|array|null
      */
     public function one($db = null)
     {

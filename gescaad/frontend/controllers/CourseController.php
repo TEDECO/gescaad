@@ -5,9 +5,9 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Course;
 use common\models\CourseSearch;
+use common\controllers\AppController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use common\controllers\AppController;
 
 /**
  * CourseController implements the CRUD actions for Course model.

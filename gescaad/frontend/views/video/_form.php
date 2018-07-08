@@ -11,20 +11,27 @@ use yii\widgets\ActiveForm;
 
 <div class="video-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'id' => 'dynamic-form',
+        'enableAjaxValidation' => true,
+        'enableClientValidation' => false,
+        'options'=>['enctype'=>'multipart/form-data']
+    ]);
+    ?>
 
     <?= $form->field($model, 'vid_name')->textInput(['maxlength' => true]) ?>
+    
+    <?=$form->field($model, 'languageLocalization_lan_id')->dropDownList(LanguageLocalization::getList(), [
+        'prompt' => Yii::t('app', 'select video language') . '...'])?>
 
-    <?= $form->field($model, 'languageLocalization_lan_id')->dropDownList(LanguageLocalization::getList(), [
-                    'prompt' => Yii::t('app', 'select video language').'...',
-                ])?>
-                
+    <?= $form->field($model, 'languageLocalization_lan_id')->textInput() ?>
+
     <?= $form->field($model, 'vid_duration')->textInput() ?>
 
     <?= $form->field($model, 'vid_file')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'vid_url')->textInput(['maxlength' => true]) ?>
-
+    
     <div class="panel panel-default">
         <div class="panel-heading"><h4><i class="glyphicon glyphicon-envelope"></i><?= Yii::t('app', 'Video goals') ?></h4></div>
         <div class="panel-body">
@@ -36,23 +43,19 @@ use yii\widgets\ActiveForm;
                 'min' => 1, // 0 or 1 (default 1)
                 'insertButton' => '.add-item', // css class
                 'deleteButton' => '.remove-item', // css class
-                'model' => $modelsVideoGoals[0],
+                'model' => $modelsHasCompetency[0],
                 'formId' => 'dynamic-form',
-                 /*
                 'formFields' => [
-                    VideoGoals::getAttributesList()
-                ],
-                */
-                'formFields' => [
-                    'competency_com_id'
+                    'competency_com_id',
+                    'hco_type'
                 ],
             ]); ?>
 
             <div class="container-items"><!-- widgetContainer -->
-            <?php foreach ($modelsVideoGoals as $i => $modelVideoGoal): ?>
+            <?php foreach ($modelsHasCompetency as $i => $modelHasCompetency): ?>
                 <div class="item panel panel-default"><!-- widgetBody -->
                     <div class="panel-heading">
-                        <h3 class="panel-title pull-left"><?= Yii::t('app', 'Video goals') ?></h3>
+                        <h3 class="panel-title pull-left"><?= Yii::t('app', 'Video goals and requirements') ?></h3>
                         <div class="pull-right">
                             <button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                             <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
@@ -62,13 +65,16 @@ use yii\widgets\ActiveForm;
                     <div class="panel-body">
                         <?php
                         // necessary for update action.
-                        if (! $modelVideoGoal->isNewRecord) {
-                            echo Html::activeHiddenInput($modelVideoGoal, "[{$i}]vig_id");
+                        if (! $modelHasCompetency->isNewRecord) {
+                            echo Html::activeHiddenInput($modelHasCompetency, "[{$i}]hco_id");
                         }
                         ?>
                         <div class="row">
                             <div class="col-sm-4">
-                                <?= $form->field($modelVideoGoal, "[{$i}]competency_com_id")->textInput(['maxlength' => true]) ?>
+                                <?= $form->field($modelHasCompetency, "[{$i}]competency_com_id")->textInput(['maxlength' => true]) ?>
+                            </div>
+                            <div class="col-sm-4">
+                                <?= $form->field($modelHasCompetency, "[{$i}]hco_type")->textInput(['maxlength' => true]) ?>
                             </div>
                         </div><!-- .row -->
                     </div>
@@ -80,8 +86,7 @@ use yii\widgets\ActiveForm;
     </div>
 
     <div class="form-group">
-        <!-- <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?> -->
-        <?= Html::submitButton($modelVideoGoal->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
@@ -99,7 +104,7 @@ $(".dynamicform_wrapper").on("afterInsert", function(e, item) {
 });
 
 $(".dynamicform_wrapper").on("beforeDelete", function(e, item) {
-    if (! confirm("Are you sure you want to delete this item?")) {
+    if (! confirm("<?= Yii::t('app', 'Are you sure you want to delete this item?') ?>")) {
         return false;
     }
     return true;

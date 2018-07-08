@@ -3,18 +3,17 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\controllers\AppController;
+use common\models\Model;
 use common\models\Video;
 use common\models\VideoSearch;
-use common\models\VideoGoals;
-use common\models\VideoRequirements;
-use common\models\Model;
+use common\controllers\AppController;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use yii\base\Exception;
+use yii\db\Exception;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use common\models\HasCompetency;
 
 /**
  * VideoController implements the CRUD actions for Video model.
@@ -72,56 +71,38 @@ class VideoController extends AppController
     public function actionCreate()
     {
         $model = new Video();
-        $modelsVideoGoals = [new VideoGoals];
-        $modelsVideoRequirements = [new VideoRequirements];
+        $modelsHasCompetency = [new HasCompetency];
 
         /*
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->vid_id]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
         */
-        
         if ($model->load(Yii::$app->request->post())) {
             
-            $modelsVideoGoals = Model::createMultiple(VideoGoals::classname());
-            $modelsVideoRequirements = Model::createMultiple(VideoRequirements::classname());
-            Model::loadMultiple($modelsVideoGoals, Yii::$app->request->post());
-            Model::loadMultiple($modelsVideoRequirements, Yii::$app->request->post());
+            $modelsHasCompetency = Model::createMultiple(HasCompetency::classname());
+            Model::loadMultiple($modelsHasCompetency, Yii::$app->request->post());
             
             // ajax validation
             if (Yii::$app->request->isAjax) {
                 Yii::$app->response->format = Response::FORMAT_JSON;
                 return ArrayHelper::merge(
-                    ActiveForm::validateMultiple($modelsVideoRequirements),
-                    ActiveForm::validateMultiple($modelsVideoGoals),
+                    ActiveForm::validateMultiple($modelsHasCompetency),
                     ActiveForm::validate($model)
                     );
             }
             
             // validate all models
             $valid = $model->validate();
-            $valid = Model::validateMultiple($modelsVideoGoals) && $valid;
-            $valid = Model::validateMultiple($modelsVideoRequirements) && $valid;
+            $valid = Model::validateMultiple($modelsHasCompetency) && $valid;
             
             if ($valid) {
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)) {
-                        foreach ($modelsVideoGoals as $modelVideoGoals) {
-                            $modelVideoGoals->video_vid_id = $model->vid_id;
-                            if (! ($flag = $modelVideoGoals->save(false))) {
-                                $transaction->rollBack();
-                                break;
-                            }
-                        }
-                        
-                        foreach ($modelsVideoRequirements as $modelVideoRequirements) {
-                            $modelVideoRequirements->video_vid_id = $model->vid_id;
-                            if (! ($flag = $modelVideoRequirements->save(false))) {
+                        foreach ($modelsHasCompetency as $modelHasCompetency) {
+                            $modelHasCompetency->video_vid_id = $model->vid_id;
+                            if (! ($flag = $modelHasCompetency->save(false))) {
                                 $transaction->rollBack();
                                 break;
                             }
@@ -136,11 +117,10 @@ class VideoController extends AppController
                 }
             }
         }
-        
+
         return $this->render('create', [
             'model' => $model,
-            'modelsVideoGoals' => (empty($modelsVideoGoals)) ? [new VideoGoals] : $modelsVideoGoals,
-            'modelsVideoRequirements' => (empty($modelsVideoRequirements)) ? [new VideoRequirements] : $modelsVideoRequirements
+            'modelsHasCompetency' => (empty($modelsHasCompetency)) ? [new HasCompetency] : $modelsHasCompetency,
         ]);
     }
 

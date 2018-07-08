@@ -3,11 +3,11 @@
 namespace common\models;
 
 /**
- * This is the ActiveQuery class for [[CourseComposition]].
+ * This is the ActiveQuery class for [[IsCompatible]].
  *
- * @see CourseComposition
+ * @see IsCompatible
  */
-class CourseCompositionQuery extends \yii\db\ActiveQuery
+class IsCompatibleQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class CourseCompositionQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return CourseComposition[]|array
+     * @return IsCompatible[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class CourseCompositionQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return CourseComposition|array|null
+     * @return IsCompatible|array|null
      */
     public function one($db = null)
     {

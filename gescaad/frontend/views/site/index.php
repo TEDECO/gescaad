@@ -37,7 +37,7 @@ $this->title = 'GESCAAD - GEstión de Contenido Audiovisual para Alfabetización
 			</div>
 			<div class="col-lg-4">
 				<h2><?=  Yii::t('app', 'Competency catalog')?></h2>
-				<p><?=  Yii::t('app', 'Here you can consult the goals obtainable with the current video digital literacy formation pills available.')?>.</p>
+				<p><?=  Yii::t('app', 'Here you can consult the goals obtainable and required of current video digital literacy formation pills available.')?>.</p>
 				<p>
 					<a class="btn btn-default"
 						href="<?= Yii::$app->getUrlManager()->createUrl('competency/index') ?>"><?=  Yii::t('app', 'Access') ?></a>

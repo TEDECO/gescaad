@@ -11,7 +11,7 @@ use Yii;
  * @property string $cou_name course general description .- main theme
  * @property int $cou_totalDuration automatically calculated total length of course .- dependent of courseComposition elements .- optional, only for optimization purposes (could be calculated in real time)
  *
- * @property CourseComposition[] $courseCompositions
+ * @property HasVideo[] $hasVideos
  */
 class Course extends \yii\db\ActiveRecord
 {
@@ -49,9 +49,9 @@ class Course extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCourseCompositions()
+    public function getHasVideos()
     {
-        return $this->hasMany(CourseComposition::className(), ['course_cou_id' => 'cou_id']);
+        return $this->hasMany(HasVideo::className(), ['course_cou_id' => 'cou_id']);
     }
 
     /**

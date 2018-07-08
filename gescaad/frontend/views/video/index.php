@@ -1,10 +1,8 @@
 <?php
 
-// use yii\grid\GridView;
-use kartik\grid\GridView;
 use yii\helpers\Html;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
-
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\VideoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -21,17 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Video'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
             ['class' => '\kartik\grid\SerialColumn'],
 
             // 'vid_id',
             'vid_name',
-
             [
                 'attribute' => 'languageLocalization_lan_id',
                 'value' => function ($model, $key, $index, $column) {
@@ -41,8 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'form-control',
                     'prompt' => Yii::t('app', 'select video language').'...',
                 ])
-            ],
-            
+            ],          
             'vid_duration',
             'vid_file',
             // 'vid_url:url',

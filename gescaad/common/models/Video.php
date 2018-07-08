@@ -14,11 +14,10 @@ use Yii;
  * @property string $vid_file Video file name
  * @property string $vid_url Video url
  *
- * @property CourseComposition[] $courseCompositions
+ * @property HasCompetency[] $hasCompetencies
+ * @property HasRequirement[] $hasRequirements
+ * @property HasVideo[] $hasVideos
  * @property LanguageLocalization $languageLocalizationLan
- * @property VideoGoals[] $videoGoals
- * @property VideoRequirements[] $videoRequirements
- * @property VideoSWRequirements[] $videoSWRequirements
  */
 class Video extends \yii\db\ActiveRecord
 {
@@ -53,7 +52,7 @@ class Video extends \yii\db\ActiveRecord
         return [
             'vid_id' => Yii::t('app', 'Video ID'),
             'vid_name' => Yii::t('app', 'Video name'),
-            'languageLocalization_lan_id' => Yii::t('app', 'Language localization'),
+            'languageLocalization_lan_id' => Yii::t('app', 'Language localization ID'),
             'vid_duration' => Yii::t('app', 'Video duration (minutes)'),
             'vid_file' => Yii::t('app', 'Video filename'),
             'vid_url' => Yii::t('app', 'Video Url'),
@@ -63,9 +62,25 @@ class Video extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCourseCompositions()
+    public function getHasCompetencies()
     {
-        return $this->hasMany(CourseComposition::className(), ['video_vid_id' => 'vid_id']);
+        return $this->hasMany(HasCompetency::className(), ['video_vid_id' => 'vid_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHasRequirements()
+    {
+        return $this->hasMany(HasRequirement::className(), ['video_vid_id' => 'vid_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHasVideos()
+    {
+        return $this->hasMany(HasVideo::className(), ['video_vid_id' => 'vid_id']);
     }
 
     /**
@@ -74,30 +89,6 @@ class Video extends \yii\db\ActiveRecord
     public function getLanguageLocalizationLan()
     {
         return $this->hasOne(LanguageLocalization::className(), ['lan_id' => 'languageLocalization_lan_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getVideoGoals()
-    {
-        return $this->hasMany(VideoGoals::className(), ['video_vid_id' => 'vid_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getVideoRequirements()
-    {
-        return $this->hasMany(VideoRequirements::className(), ['video_vid_id' => 'vid_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getVideoSWRequirements()
-    {
-        return $this->hasMany(VideoSWRequirements::className(), ['video_vid_id' => 'vid_id']);
     }
 
     /**
@@ -110,7 +101,7 @@ class Video extends \yii\db\ActiveRecord
     }
     
     /**
-     * Gets full language localization array options from LanguageLocalization model. 
+     * Gets full language localization array options from LanguageLocalization model.
      * For use in input select.
      *
      * @return string

@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "softwareSOCompatibility".
+ * This is the model class for table "isCompatible".
  *
  * @property int $swc_id
  * @property int $software_sof_id
@@ -14,14 +14,14 @@ use Yii;
  * @property OperatingSystem $operatingSystemOpe
  * @property Software $softwareSof
  */
-class SoftwareSOCompatibility extends \yii\db\ActiveRecord
+class IsCompatible extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'softwareSOCompatibility';
+        return 'isCompatible';
     }
 
     /**
@@ -67,10 +67,10 @@ class SoftwareSOCompatibility extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return SoftwareSOCompatibilityQuery the active query used by this AR class.
+     * @return HasVideoQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new SoftwareSOCompatibilityQuery(get_called_class());
+        return new HasVideoQuery(get_called_class());
     }
 }
