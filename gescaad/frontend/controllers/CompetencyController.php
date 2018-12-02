@@ -36,7 +36,8 @@ class CompetencyController extends AppController
                         ],
                         'allow' => true,
                         'roles' => [
-                            'Producer,Supervisor'
+                            'Producer',
+							'Supervisor'
                         ]
                     ],
                     [

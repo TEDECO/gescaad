@@ -43,7 +43,7 @@ class CourseController extends AppController
                         ],
                         'allow' => true,
                         'roles' => [
-                            'Producer,Supervisor'
+                            'Supervisor'
                         ]
                     ],
                     [

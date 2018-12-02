@@ -44,7 +44,8 @@ class VideoController extends AppController
                         ],
                         'allow' => true,
                         'roles' => [
-                            'Producer,Supervisor'
+                            'Producer',
+							'Supervisor'
                         ]
                     ],
                     [
@@ -55,7 +56,7 @@ class VideoController extends AppController
                         'roles' => [
                             'Supervisor'
                         ]
-                    ],
+                    ]
                 ]
             ],
             'verbs' => [
