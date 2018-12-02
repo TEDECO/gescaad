@@ -31,7 +31,8 @@ AppAsset::register($this);
     $languageItem = new cetver\LanguageSelector\items\DropDownLanguageItem([
         'languages' => [
             'en' => '<span class="flag-icon flag-icon-us"></span> ' . Yii::t('app', 'English'),
-            'es-ES' => '<span class="flag-icon flag-icon-es"></span> ' . Yii::t('app', 'Spanish')
+            'es-ES' => '<span class="flag-icon flag-icon-es"></span> ' . Yii::t('app', 'Spanish'),
+            'es' => '<span class="flag-icon flag-icon-es"></span> ' . Yii::t('app', 'Spanish')
         ],
         'options' => [
             'encode' => false
