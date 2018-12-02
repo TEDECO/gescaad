@@ -8,6 +8,7 @@ use common\models\CompetencySearch;
 use common\controllers\AppController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * CompetencyController implements the CRUD actions for Competency model.
@@ -20,12 +21,42 @@ class CompetencyController extends AppController
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+        		'only' => [
+                    'create',
+                    'update',
+                    'delete'
+                ],
+                'rules' => [
+                    [
+                        'actions' => [
+                            'create',
+							'update'
+                        ],
+                        'allow' => true,
+                        'roles' => [
+                            'Producer,Supervisor'
+                        ]
+                    ],
+                    [
+                        'actions' => [
+                            'delete'
+                        ],
+                        'allow' => true,
+                        'roles' => [
+                            'Supervisor'
+                        ]
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
             ],
+
         ];
     }
 

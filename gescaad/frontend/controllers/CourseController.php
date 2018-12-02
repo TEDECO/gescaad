@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use common\models\ModelHasVideo;
 
@@ -27,6 +28,35 @@ class CourseController extends AppController
     public function behaviors()
     {
         return [
+			'access' => [
+                'class' => AccessControl::className(),
+        		'only' => [
+                    'create',
+                    'update',
+                    'delete'
+                ],
+                'rules' => [
+                    [
+                        'actions' => [
+                            'create',
+                            'update'
+                        ],
+                        'allow' => true,
+                        'roles' => [
+                            'Producer,Supervisor'
+                        ]
+                    ],
+                    [
+                        'actions' => [
+                            'delete'
+                        ],
+                        'allow' => true,
+                        'roles' => [
+                            'Supervisor'
+                        ]
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
