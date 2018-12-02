@@ -4,7 +4,7 @@ return [
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=127.0.0.1;dbname=gescaad',
-            'username' => 'adm_gescaad',
+            'username' => 'gescaadu',
             'password' => 'xKw1S8sqLyuttj',
             'charset' => 'utf8'
         ],

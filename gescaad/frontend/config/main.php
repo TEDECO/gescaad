@@ -47,7 +47,7 @@ return [
         ],
         'urlManagerBackend' => [
             'class' => 'yii\web\urlManager',
-            'baseUrl' => '/gescaad/backend/web',
+       	    'baseUrl' => 'http://admin.gescaad.tedeco.org',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],
