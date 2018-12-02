@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
+// use kartik\grid\GridView;
+use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\VideoSearch */
@@ -24,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => '\kartik\grid\SerialColumn'],
+            // ['class' => '\kartik\grid\SerialColumn'],
 
             // 'vid_id',
             'vid_name',

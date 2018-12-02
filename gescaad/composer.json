@@ -16,12 +16,13 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.6",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
+		"yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "mdmsoft/yii2-admin": "~2.0",
         "wbraganca/yii2-dynamicform": "*",
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-grid": "@dev",
+		"kartik-v/yii2-krajee-base": "1.9.8",
         "cetver/yii2-language-selector": "^1.0"
     },
     "require-dev": {
