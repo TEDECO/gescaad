@@ -52,7 +52,15 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        
-        return $user->save() ? $user : null;
+
+		if ( $user->save() ) {
+        	// Asignación de rol "Guest" por defecto
+        	$auth = \Yii::$app->authManager;
+        	$authorRole = $auth->getRole('Guest');
+        	$auth->assign($authorRole, $user->getId());
+			return $user;
+      	} else {
+        	return null;
+		} 
     }
 }
